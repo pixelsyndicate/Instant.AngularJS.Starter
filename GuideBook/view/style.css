@@ -1,0 +1,26 @@
+
+.notes{padding: 5px;
+    margin:5px;}
+.even{
+    background-color: #f2dede;
+    border-color: #ff0000;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05)
+}
+.odd
+{
+    border-color:#0000ff;
+    background-color: #bce8f1;
+    margin-bottom: 20px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05)

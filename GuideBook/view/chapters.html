@@ -1,62 +1,33 @@
 <div class="row">
-    <div class="col-md-4 col-sm-6" ng-repeat='chapter in chapters | orderBy: "title"'>
-        <h2>{{chapter.title}}</h2>
-        <p>{{chapter.summary}}</p>
+    <div class="col-md-6" ng-repeat='chapter in chapters | orderBy: "title"'>
+        <h2>{{chapter.title}}<small>{{chapter.summary}}</small></h2>
+        <p class=''>
+            <a href='#/chapter/{{chapter.id}}'>
+                
+                <i ng-show='chapter.notes.length == 0' class="glyphicon glyphicon-question-sign"></i>
+                <i ng-hide='chapter.notes.length == 0' class="glyphicon glyphicon-chevron-down"></i>
+                <ng-switch on='chapter.notes.length'>
+                    <span ng-switch-when='0'>
+                        Nada?</span>
+                    <span ng-switch-default>
+                        {{chapter.notes.length}}</span>
+                </ng-switch>
+                <ng-pluralize count='chapter.notes.length' when='{"0": "Add?", "1": "note", "other": "notes"}'>
+                </ng-pluralize>
+              <!--   <ng-switch on='chapter.notes.length'>
+                    <span ng-switch-when='1'>note</span>
+                    <span ng-switch-default>notes</span>
+                </ng-switch> -->
+            </a></p>
         <p>
-            <a href='#/chapter/{{chapter.id}}'>{{chapter.notes.length}}
-                <span ng-show='chapter.notes.length == 1'>note</span>
-                <span ng-hide='chapter.notes.length == 1'>notes</span></a>
+
         </p>
         <div class='notes' ng-show='chapter.id == selectedChapterId ' >
-            <div class='well' ng-repeat='note in chapter.notes | orderBy: "id"'>{{note.content}}
-                
-                    <a class="btn btn-sm pull-right" href ng-click='onDelete(note.id)'>delete</a>
-           
-        </div>
-    </div>
-    <a class="btn btn-default" href="#/addNote/{{chapter.id}}" role="button">Add Note »</a>
-</div>
-</div>
-<!-- 
-<ul>
-    <li ng-repeat='chapter in chapters | orderBy: "title"'>
-        <h2>{{chapter.title}}</h2>
-        <p>{{chapter.summary}}</p>
-        <p>
-            <a href='#/chapter/{{chapter.id}}'>
-                {{chapter.notes.lenght}}
-                <span ng-show='chapter.notes.length ==1'>note</span>
-                <span ng-hide='chapter.notes.length == 1'>notes</span></a> 
-            | 
-            <a href='#/addNote/{{chapter.id}}'>add note</a>
-        </p>
-        
-        <ul class='notes' ng-show='chapter.id == selectedChapterId '>
-            <li ng-repeat='note in chapter.notes | orderBy: "id"'>
-                <div></div>
-                <div><a href ng-click='onDelete(note.id)'>delete</a></div>
+            <div class='col-lg-6 well well-sm' ng-repeat='note in chapter.notes | orderBy: "id"' ng-class-even='"even"' ng-class-odd='"odd"'>
+                <div>{{$index+1}}</div><div><a ng-click='onDelete(note.id)'>delete</a></div>
                 <p>{{note.content}}</p>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-
-
-          
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div>
-      </div> -->
+        <a class="btn btn-primary" href="#/addNote/{{chapter.id}}" role="button">Add Note »</a>
+    </div>
+</div>
