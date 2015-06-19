@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6" ng-repeat='chapter in chapters | orderBy: "title"'>
-        <h2>{{chapter.title}}<small>{{chapter.summary}}</small></h2>
+        <h3>{{chapter.title}} <br /><small>{{chapter.summary}}</small></h3>
         <p class=''>
             <a href='#/chapter/{{chapter.id}}'>
                 
@@ -23,11 +23,11 @@
 
         </p>
         <div class='notes' ng-show='chapter.id == selectedChapterId ' >
-            <div class='col-lg-6 well well-sm' ng-repeat='note in chapter.notes | orderBy: "id"' ng-class-even='"even"' ng-class-odd='"odd"'>
-                <div>{{$index+1}}</div><div><a ng-click='onDelete(note.id)'>delete</a></div>
+            <div class='col-lg-6 m' ng-repeat='note in chapter.notes | orderBy: "id"' ng-class-even='"even"' ng-class-odd='"odd"'>
+                <span class="label label-primary"> {{$index+1}} </span><div class="pull-right"><a class="" ng-click='onDelete(note.id)'>delete</a></div>
                 <p>{{note.content}}</p>
             </div>
         </div>
-        <a class="btn btn-primary" href="#/addNote/{{chapter.id}}" role="button">Add Note »</a>
+        <a class="btn btn-primary btn-sm" href="#/addNote/{{chapter.id}}" role="button">Add Note »</a>
     </div>
 </div>
